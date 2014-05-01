@@ -12,7 +12,6 @@ StockSearch::StockSearch(QWidget *parent) :
     ui(new Ui::StockSearch)
 {
     ui->setupUi(this);
-   // parseData();
 }
 
 StockSearch::~StockSearch()
@@ -43,7 +42,7 @@ void StockSearch::parseData()
     cout << input << endl;
     fileReader.close();
 
-    //Removes all double quotes.
+    //Removes all double quotes from string we pulled from YahooFinance
     charToReplace = "\"";
     for (int i = 0; i < 6; i++)
     {
@@ -61,13 +60,20 @@ void StockSearch::parseData()
     //Writing data to window.
     string tempVar;
 
-    input.erase(0, input.find(" ") + 1); //Deleting symbol name from string (we dont need it here).
+    tempVar = input.substr(0, input.find(" ")); //Getting stock symbol.
+    cout << tempVar << endl;
+
+    QString myQString = QString::fromStdString(tempVar); //Writing stock symbol to window.
+    ui->lblCompanyName->setText(myQString);
+
+    input.erase(0, input.find(" ") + 1); //Deleting stock symbol name from string.
     cout << input << endl;
 
+    //**************************************************************************************
     tempVar = input.substr(0, input.find(" ")); //Getting price per share.
     cout << tempVar << endl;
 
-    QString myQString = QString::fromStdString(tempVar); //Writing price per share to window.
+    myQString = QString::fromStdString(tempVar); //Writing price per share to window.
     ui->txtPricePerShare->setText(myQString);
 
     input.erase(0, input.find(" ") + 1); //Deleting price per share from string.

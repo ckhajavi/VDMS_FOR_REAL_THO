@@ -23,11 +23,6 @@ public:
 
     StockSearch(QUrl&);
 
-    //void readInData(ifstream& fileReader, string input);
-    //readInData
-    //@param ifstream&
-    //@param string
-
     ~StockSearch();
 
 private slots:
