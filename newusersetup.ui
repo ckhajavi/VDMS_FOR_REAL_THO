@@ -22,12 +22,6 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>First Name:</string>
    </property>
@@ -40,12 +34,6 @@
      <width>73</width>
      <height>16</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <property name="text">
     <string>Last name: </string>
@@ -60,12 +48,6 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>Cell Phone:</string>
    </property>
@@ -78,12 +60,6 @@
      <width>79</width>
      <height>16</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <property name="text">
     <string>Work Phone:</string>
@@ -98,12 +74,6 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>Home Phone:</string>
    </property>
@@ -116,12 +86,6 @@
      <width>32</width>
      <height>16</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <property name="text">
     <string>DOB:</string>
@@ -136,12 +100,6 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>Age:</string>
    </property>
@@ -154,12 +112,6 @@
      <width>87</width>
      <height>16</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <property name="text">
     <string>Middle Name:</string>
@@ -174,17 +126,11 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>SSN:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditFirstName">
+  <widget class="QLineEdit" name="lineEdit_fName">
    <property name="geometry">
     <rect>
      <x>95</x>
@@ -194,7 +140,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditMiddleName">
+  <widget class="QLineEdit" name="lineEdit_mName">
    <property name="geometry">
     <rect>
      <x>342</x>
@@ -204,7 +150,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditLastName">
+  <widget class="QLineEdit" name="lineEdit_lName">
    <property name="geometry">
     <rect>
      <x>575</x>
@@ -214,7 +160,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditHomePhone">
+  <widget class="QLineEdit" name="lineEdit_homePhone">
    <property name="geometry">
     <rect>
      <x>338</x>
@@ -224,7 +170,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditWorkPhone">
+  <widget class="QLineEdit" name="lineEdit_workPhone">
    <property name="geometry">
     <rect>
      <x>577</x>
@@ -234,7 +180,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditSSN">
+  <widget class="QLineEdit" name="lineEdit_plainTextSSN">
    <property name="geometry">
     <rect>
      <x>432</x>
@@ -244,7 +190,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditEmail">
+  <widget class="QLineEdit" name="lineEdit_email">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -263,17 +209,11 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>Email Adress:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditAge">
+  <widget class="QLineEdit" name="lineEdit_age">
    <property name="geometry">
     <rect>
      <x>52</x>
@@ -283,7 +223,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_CellPhone">
+  <widget class="QLineEdit" name="lineEdit_cellPhone">
    <property name="geometry">
     <rect>
      <x>94</x>
@@ -293,7 +233,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditDOB">
+  <widget class="QLineEdit" name="lineEdit_DOB">
    <property name="geometry">
     <rect>
      <x>244</x>
@@ -314,13 +254,7 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QPushButton" name="btnSubmit">
-      <property name="font">
-       <font>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
+     <widget class="QPushButton" name="pushButton1">
       <property name="text">
        <string>Submit</string>
       </property>
@@ -330,13 +264,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="btnCancelSetup">
-      <property name="font">
-       <font>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
+     <widget class="QPushButton" name="pushButton2">
       <property name="text">
        <string>Cancel Setup</string>
       </property>
@@ -356,12 +284,6 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>Retype Email Adress:</string>
    </property>
@@ -375,17 +297,11 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>Choose Password:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditRetypeEmail">
+  <widget class="QLineEdit" name="lineEdit_checkEmail">
    <property name="geometry">
     <rect>
      <x>488</x>
@@ -395,7 +311,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditChoosePass">
+  <widget class="QLineEdit" name="lineEdit_password">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -408,7 +324,7 @@
     <enum>QLineEdit::Password</enum>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditRetypePass">
+  <widget class="QLineEdit" name="lineEdit_checkPassword">
    <property name="geometry">
     <rect>
      <x>472</x>
@@ -430,17 +346,11 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>Retype Password:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblGender">
+  <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
      <x>13</x>
@@ -449,17 +359,11 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>Gender:</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButtonMale">
+  <widget class="QRadioButton" name="radioButton_male">
    <property name="geometry">
     <rect>
      <x>11</x>
@@ -475,7 +379,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButtonFemale">
+  <widget class="QRadioButton" name="radioButton_female">
    <property name="geometry">
     <rect>
      <x>11</x>
@@ -487,8 +391,11 @@
    <property name="text">
     <string>Female</string>
    </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
   </widget>
-  <widget class="QComboBox" name="comboBoxSecQ2">
+  <widget class="QComboBox" name="comboBox_securityQuestion2">
    <property name="geometry">
     <rect>
      <x>13</x>
@@ -496,12 +403,6 @@
      <width>261</width>
      <height>26</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <item>
     <property name="text">
@@ -539,7 +440,7 @@
     </property>
    </item>
   </widget>
-  <widget class="QLineEdit" name="lineEditSecQ2">
+  <widget class="QLineEdit" name="lineEdit_securityAnswer2">
    <property name="geometry">
     <rect>
      <x>288</x>
@@ -558,17 +459,11 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
-    <string>Address Line 1:</string>
+    <string>Adress Line 1:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditAddress1">
+  <widget class="QLineEdit" name="lineEdit_addr1">
    <property name="geometry">
     <rect>
      <x>114</x>
@@ -578,7 +473,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBoxStateProvReg">
+  <widget class="QComboBox" name="comboBox_state">
    <property name="geometry">
     <rect>
      <x>166</x>
@@ -592,12 +487,6 @@
      <width>219</width>
      <height>0</height>
     </size>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <item>
     <property name="text">
@@ -855,7 +744,7 @@
     </property>
    </item>
   </widget>
-  <widget class="QLineEdit" name="lineEditCountry">
+  <widget class="QLineEdit" name="lineEdit_country">
    <property name="geometry">
     <rect>
      <x>78</x>
@@ -865,7 +754,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditSecQ1">
+  <widget class="QLineEdit" name="lineEdit_securityAnswer1">
    <property name="geometry">
     <rect>
      <x>283</x>
@@ -875,7 +764,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBoxSecQ1">
+  <widget class="QComboBox" name="comboBox_securityQuestion1">
    <property name="geometry">
     <rect>
      <x>13</x>
@@ -883,12 +772,6 @@
      <width>261</width>
      <height>26</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <item>
     <property name="text">
@@ -935,12 +818,6 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>State/Province/Region:</string>
    </property>
@@ -954,17 +831,11 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>City:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditCity">
+  <widget class="QLineEdit" name="lineEdit_city">
    <property name="geometry">
     <rect>
      <x>52</x>
@@ -974,7 +845,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditAddress2">
+  <widget class="QLineEdit" name="lineEdit_addr2">
    <property name="geometry">
     <rect>
      <x>114</x>
@@ -993,14 +864,8 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
-    <string>Address Line 2:</string>
+    <string>Adress Line 2:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_19">
@@ -1012,25 +877,33 @@
      <height>16</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
    <property name="text">
     <string>Country:</string>
    </property>
   </widget>
-  <zorder>lineEditSecQ1</zorder>
-  <zorder>comboBoxSecQ1</zorder>
+  <widget class="QLabel" name="labelNewUserPic">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>360</y>
+     <width>271</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>labelNewUserPic</zorder>
+  <zorder>lineEdit_securityAnswer1</zorder>
+  <zorder>comboBox_securityQuestion1</zorder>
   <zorder>label_17</zorder>
-  <zorder>lineEditCity</zorder>
-  <zorder>lineEditAddress2</zorder>
+  <zorder>lineEdit_city</zorder>
+  <zorder>lineEdit_addr2</zorder>
   <zorder>label_16</zorder>
   <zorder>label_19</zorder>
-  <zorder>lblGender</zorder>
-  <zorder>radioButtonFemale</zorder>
+  <zorder>label_8</zorder>
+  <zorder>radioButton_female</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>label</zorder>
   <zorder>label_2</zorder>
@@ -1041,60 +914,77 @@
   <zorder>label_7</zorder>
   <zorder>label_9</zorder>
   <zorder>label_10</zorder>
-  <zorder>lineEditFirstName</zorder>
-  <zorder>lineEditMiddleName</zorder>
-  <zorder>lineEditLastName</zorder>
-  <zorder>lineEditHomePhone</zorder>
-  <zorder>lineEditWorkPhone</zorder>
-  <zorder>lineEditDOB</zorder>
-  <zorder>lineEdit_CellPhone</zorder>
-  <zorder>lineEditSSN</zorder>
-  <zorder>lineEditEmail</zorder>
+  <zorder>lineEdit_fName</zorder>
+  <zorder>lineEdit_mName</zorder>
+  <zorder>lineEdit_lName</zorder>
+  <zorder>lineEdit_homePhone</zorder>
+  <zorder>lineEdit_workPhone</zorder>
+  <zorder>lineEdit_DOB</zorder>
+  <zorder>lineEdit_cellPhone</zorder>
+  <zorder>lineEdit_plainTextSSN</zorder>
+  <zorder>lineEdit_email</zorder>
   <zorder>label_11</zorder>
-  <zorder>lineEditAge</zorder>
-  <zorder>radioButtonMale</zorder>
+  <zorder>lineEdit_age</zorder>
+  <zorder>radioButton_male</zorder>
   <zorder>label_12</zorder>
   <zorder>label_13</zorder>
-  <zorder>lineEditRetypeEmail</zorder>
-  <zorder>lineEditChoosePass</zorder>
-  <zorder>lineEditRetypePass</zorder>
+  <zorder>lineEdit_checkEmail</zorder>
+  <zorder>lineEdit_password</zorder>
+  <zorder>lineEdit_checkPassword</zorder>
   <zorder>label_14</zorder>
-  <zorder>comboBoxSecQ2</zorder>
-  <zorder>lineEditSecQ2</zorder>
+  <zorder>comboBox_securityQuestion2</zorder>
+  <zorder>lineEdit_securityAnswer2</zorder>
   <zorder>label_15</zorder>
-  <zorder>lineEditAddress1</zorder>
+  <zorder>lineEdit_addr1</zorder>
   <zorder>label_18</zorder>
-  <zorder>comboBoxStateProvReg</zorder>
-  <zorder>lineEditCountry</zorder>
+  <zorder>comboBox_state</zorder>
+  <zorder>lineEdit_country</zorder>
  </widget>
  <tabstops>
-  <tabstop>lineEditFirstName</tabstop>
-  <tabstop>lineEditMiddleName</tabstop>
-  <tabstop>lineEditLastName</tabstop>
-  <tabstop>lineEdit_CellPhone</tabstop>
-  <tabstop>lineEditHomePhone</tabstop>
-  <tabstop>lineEditWorkPhone</tabstop>
-  <tabstop>lineEditAge</tabstop>
-  <tabstop>lineEditDOB</tabstop>
-  <tabstop>lineEditSSN</tabstop>
-  <tabstop>lineEditAddress1</tabstop>
-  <tabstop>lineEditAddress2</tabstop>
-  <tabstop>lineEditCity</tabstop>
-  <tabstop>comboBoxStateProvReg</tabstop>
-  <tabstop>lineEditCountry</tabstop>
-  <tabstop>lineEditEmail</tabstop>
-  <tabstop>lineEditRetypeEmail</tabstop>
-  <tabstop>lineEditChoosePass</tabstop>
-  <tabstop>lineEditRetypePass</tabstop>
-  <tabstop>comboBoxSecQ1</tabstop>
-  <tabstop>lineEditSecQ1</tabstop>
-  <tabstop>comboBoxSecQ2</tabstop>
-  <tabstop>lineEditSecQ2</tabstop>
-  <tabstop>radioButtonMale</tabstop>
-  <tabstop>radioButtonFemale</tabstop>
-  <tabstop>btnSubmit</tabstop>
-  <tabstop>btnCancelSetup</tabstop>
+  <tabstop>lineEdit_fName</tabstop>
+  <tabstop>lineEdit_mName</tabstop>
+  <tabstop>lineEdit_lName</tabstop>
+  <tabstop>lineEdit_cellPhone</tabstop>
+  <tabstop>lineEdit_homePhone</tabstop>
+  <tabstop>lineEdit_workPhone</tabstop>
+  <tabstop>lineEdit_age</tabstop>
+  <tabstop>lineEdit_DOB</tabstop>
+  <tabstop>lineEdit_plainTextSSN</tabstop>
+  <tabstop>lineEdit_addr1</tabstop>
+  <tabstop>lineEdit_addr2</tabstop>
+  <tabstop>lineEdit_city</tabstop>
+  <tabstop>comboBox_state</tabstop>
+  <tabstop>lineEdit_country</tabstop>
+  <tabstop>lineEdit_email</tabstop>
+  <tabstop>lineEdit_checkEmail</tabstop>
+  <tabstop>lineEdit_password</tabstop>
+  <tabstop>lineEdit_checkPassword</tabstop>
+  <tabstop>comboBox_securityQuestion1</tabstop>
+  <tabstop>lineEdit_securityAnswer1</tabstop>
+  <tabstop>comboBox_securityQuestion2</tabstop>
+  <tabstop>lineEdit_securityAnswer2</tabstop>
+  <tabstop>radioButton_male</tabstop>
+  <tabstop>radioButton_female</tabstop>
+  <tabstop>pushButton1</tabstop>
+  <tabstop>pushButton2</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton2</sender>
+   <signal>clicked()</signal>
+   <receiver>NewUserSetup</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>221</x>
+     <y>555</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>322</x>
+     <y>405</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

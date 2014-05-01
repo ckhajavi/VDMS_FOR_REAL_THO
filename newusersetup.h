@@ -2,7 +2,8 @@
 #define NEWUSERSETUP_H
 
 #include <QDialog>
-#include "ui_newusersetup.h"
+#include"addfilepath.h"
+#include "user.h"
 
 namespace Ui {
 class NewUserSetup;
@@ -14,15 +15,17 @@ class NewUserSetup : public QDialog
 
 public:
     explicit NewUserSetup(QWidget *parent = 0);
+    bool validate();
     ~NewUserSetup();
 
 private slots:
-    void on_btnSubmit_clicked();
-
-    void on_btnCancelSetup_clicked();
+    void on_pushButton1_clicked();
 
 private:
     Ui::NewUserSetup *ui;
+    bool checked;
+
 };
 
 #endif // NEWUSERSETUP_H
+
