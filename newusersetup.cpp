@@ -6,10 +6,6 @@ NewUserSetup::NewUserSetup(QWidget *parent) :
     ui(new Ui::NewUserSetup)
 {
     ui->setupUi(this);
-
-    //insert pic
-    //QPixmap pix("/Users/Prigmore/Desktop/handshake.jpg");
-    //ui->labelNewUserPic->setPixmap(pix);
 }
 
 bool NewUserSetup::validate()

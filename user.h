@@ -7,8 +7,8 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDir>
-#include"wrongfiledialog.h"
-#include "addfilepath.h"
+//#include"wrongfiledialog.h"
+//#include "addfilepath.h"
 #include <QDebug>
 
 
@@ -101,7 +101,7 @@ private:
     QStringList userArray;
     int capacity;
     int count;
-    wrongFileDialog *wrongFile;
+    //wrongFileDialog *wrongFile;
     QString fileName;
 
 };

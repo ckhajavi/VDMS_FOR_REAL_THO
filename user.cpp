@@ -20,6 +20,7 @@ void User::setFileName()
     fileName.append(fName);
     fileName.append(".txt");
     qDebug() << fileName;
+    
 }
 
 void User::loadUser()
@@ -27,9 +28,10 @@ void User::loadUser()
     QFile file(fileName);
     if (!file.exists())
     {
-       wrongFile = new wrongFileDialog();
+       //wrongFile = new wrongFileDialog();
        //wrongFile -> show();
-       wrongFile->exec();
+       //wrongFile->exec();
+        qDebug() << "sorry not found" << endl;
     }
     else
     {
