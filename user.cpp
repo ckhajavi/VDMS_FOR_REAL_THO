@@ -15,7 +15,11 @@ void User::setFileName()
     fileName.append(fName);
     fileName.append(".txt");
     qDebug() << fileName;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> FETCH_HEAD
 }
 
 void User::loadUser()

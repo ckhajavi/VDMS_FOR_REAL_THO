@@ -57,7 +57,7 @@ void StockSearch::parseData()
     }
     cout << input << endl;
 
-    //Writing data to window.
+    //Writing data to StockSearchWindow.
     string tempVar;
 
     tempVar = input.substr(0, input.find(" ")); //Getting stock symbol.

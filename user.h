@@ -7,6 +7,11 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDir>
+<<<<<<< HEAD
+=======
+//#include"wrongfiledialog.h"
+//#include "addfilepath.h"
+>>>>>>> FETCH_HEAD
 #include <QDebug>
 #include<Qmap>
 
@@ -96,7 +101,14 @@ private:
     QString securityQuestion2;
     QString securityAnswer2;
     enumGender gender;
+<<<<<<< HEAD
     QMap<QString, QString> userMap;
+=======
+    QStringList userArray;
+    int capacity;
+    int count;
+    //wrongFileDialog *wrongFile;
+>>>>>>> FETCH_HEAD
     QString fileName;
 
 };
