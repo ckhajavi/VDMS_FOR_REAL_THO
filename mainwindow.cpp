@@ -35,20 +35,26 @@ void MainWindow::on_btnForgotPass_clicked()
 //Creates Main Login page after Logging in
 void MainWindow::on_btnLogIn_clicked()
 {
-    User currentUser;
-    currentUser.setFileName(ui->lineEditUserName->text());
-    currentUser.loadUser();
-    QString password = currentUser.getPassword();
+    User currentUser;                                       // create an User object (it's empty right now)
+    currentUser.setFileName(ui->lineEditUserName->text());  //sets the path to where the user info is saved
+    currentUser.loadUser();                                 // loads user info from text file and populates the objects variables with values
+    QString password = currentUser.getPassword();           // create a variable password and set it equal to user's password
     //check to see if password matches
-    if(ui->lineEditPassword->text() == password)
+    if( !currentUser.loadUser())
     {
-        myLoginDialog = new LoginPage(this);
+        qDebug() << "sorry could not find user" <<endl;
+    }
+    else if(ui->lineEditPassword->text() == password)
+    {
+        myLoginDialog = new LoginPage(this);                //open the next window
         myLoginDialog->exec();
+        qDebug() << password;
     }
     else
     {
-        // change into a dialogue box
+        // change into a dialogue box when anyone gets the chance
         qDebug() << "Sorry wrong user name/ password combination" <<endl;
+        qDebug() << password;
     }
 
 }
@@ -56,4 +62,9 @@ void MainWindow::on_btnLogIn_clicked()
 void MainWindow::on_btnExit_clicked()
 {
     this->close();
+}
+
+void MainWindow::on_btnLogIn_pressed()
+{
+    on_btnLogIn_clicked();
 }

@@ -38,6 +38,8 @@ private slots:
 
     void on_btnExit_clicked();
 
+    void on_btnLogIn_pressed();
+
 private:
     Ui::MainWindow *ui;
     NewUserSetup *newUser;

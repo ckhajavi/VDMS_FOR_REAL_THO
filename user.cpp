@@ -29,7 +29,7 @@ void User::setFileName(const QString& currentUserName)
     qDebug() << fileName;
 }
 
-void User::loadUser()
+bool User::loadUser()
 {
     QFile file(fileName);
     if (!file.exists())
@@ -37,7 +37,8 @@ void User::loadUser()
        //wrongFile = new wrongFileDialog();
        //wrongFile -> show();
        //wrongFile->exec();
-        qDebug() << "sorry not found" << endl;
+        //qDebug() << "sorry not found" << endl;
+        return false;
     }
     else
     {
@@ -74,6 +75,7 @@ void User::loadUser()
         email = userMap.value("email");
         securityAnswer1 = userMap.value("securityAnswer1");
         securityAnswer2 = userMap.value("securityAnswer2");
+        return true;
     }
 
 }
