@@ -12,7 +12,7 @@ void User::setFileName()
     QDir directory;
     fileName = directory.homePath();
     fileName.append("/");
-    fileName.append(fName);
+    fileName.append(userName);
     fileName.append(".txt");
     qDebug() << fileName;
     
