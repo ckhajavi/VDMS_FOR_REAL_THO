@@ -11,6 +11,7 @@
 //#include "addfilepath.h"
 #include <QDebug>
 #include<Qmap>
+#include<QStringList>
 
 using namespace std;
 
@@ -25,6 +26,7 @@ public:
     User();
 
     void setFileName();
+    void setFileName(const QString&);
     void loadUser();
     void saveUser();
     //set functions
@@ -75,6 +77,7 @@ public:
     QString getSecurityAnswer1() const;
     QString getSecurityQuestion2() const;
     QString getSecurityAnswer2() const;
+    QString getPassword() const;
     enumGender getGender() const;
 
 private:

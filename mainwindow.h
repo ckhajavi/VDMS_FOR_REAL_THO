@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "user.h"
 #include "newusersetup.h"
 #include "forgotpassworddialog.h"
 #include "loginpage.h"
@@ -13,6 +14,7 @@
 #include <iostream>
 #include <QObject>
 #include <QString>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;

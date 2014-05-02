@@ -12,10 +12,21 @@ void User::setFileName()
     QDir directory;
     fileName = directory.homePath();
     fileName.append("/");
-    fileName.append(fName);
+    fileName.append(userName);
     fileName.append(".txt");
     qDebug() << fileName;
     
+}
+
+//overloaded setfileName
+void User::setFileName(const QString& currentUserName)
+{
+    QDir directory;
+    fileName = directory.homePath();
+    fileName.append("/");
+    fileName.append(currentUserName);
+    fileName.append(".txt");
+    qDebug() << fileName;
 }
 
 void User::loadUser()
@@ -38,8 +49,9 @@ void User::loadUser()
         {
             line = in.readLine();
             temp = line.split(" : ");
-            userMap.insert(temp[0], temp[1]);
-
+            userMap.insert(temp.value(0), temp.value(1));
+            temp.value(0) = "";
+            temp.value(1) = "";
         }
         file.close();
         QMap<QString, QString>::const_iterator i = userMap.constBegin();
@@ -320,4 +332,9 @@ QString User::getSecurityAnswer2() const
 enumGender User::getGender() const
 {
     return gender;
+}
+
+QString User::getPassword() const
+{
+    return plainTextPassword;
 }
