@@ -4,12 +4,7 @@
 User::User()
 //: age(""), birthMonth(""), birthYear(""), birthDay(""), gender(MALE)
 {
-        capacity = 16;
-        for ( int i = 0; i < capacity; ++i)
-        {
-            userArray.append("");
-        }
-        count = 0;
+
 }
 
 void User::setFileName()
@@ -20,6 +15,7 @@ void User::setFileName()
     fileName.append(fName);
     fileName.append(".txt");
     qDebug() << fileName;
+
 }
 
 void User::loadUser()
@@ -27,39 +23,45 @@ void User::loadUser()
     QFile file(fileName);
     if (!file.exists())
     {
-       wrongFile = new wrongFileDialog();
+       //wrongFile = new wrongFileDialog();
        //wrongFile -> show();
-       wrongFile->exec();
+       //wrongFile->exec();
+        qDebug() << "sorry not found" << endl;
     }
     else
     {
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         QTextStream in(&file);
+        QString line;
+        QStringList temp;
         while(!in.atEnd())
         {
-            QString line = in.readLine();
-            userArray = line.split(",");
+            line = in.readLine();
+            temp = line.split(" : ");
+            userMap.insert(temp[0], temp[1]);
+
         }
         file.close();
-        for (int i = 0; i< userArray.size(); ++i)
-        {
-            qDebug() << userArray[i];
+        QMap<QString, QString>::const_iterator i = userMap.constBegin();
+        while (i != userMap.constEnd()) {
+            qDebug() << i.key() << " : " << i.value() << endl;
+            ++i;
         }
-        userName = userArray[0];
-        plainTextPassword = userArray[1];
-        fName = userArray[2];
-        mName = userArray[3];
-        lName = userArray[4];
-        age = userArray[5];
-        DOB = userArray[6];
-        plainTextSSN =userArray[7];
-        addr1 = userArray[8];
-        addr2 = userArray[9];
-        city = userArray[10];
-        country = userArray[11];
-        email = userArray[12];
-        securityAnswer1 = userArray[13];
-        securityAnswer2 = userArray[14];
+        userName = userMap.value("userName");
+        plainTextPassword = userMap.value("plainTextPassword");
+        fName = userMap.value("fName");
+        mName = userMap.value("mName");
+        lName = userMap.value("lName");
+        age = userMap.value("age");
+        DOB = userMap.value("DOB");
+        plainTextSSN =userMap.value("plainTextSSN");
+        addr1 = userMap.value("addr1");
+        addr2 = userMap.value("addr2");
+        city = userMap.value("city");
+        country = userMap.value("country");
+        email = userMap.value("email");
+        securityAnswer1 = userMap.value("securityAnswer1");
+        securityAnswer2 = userMap.value("securityAnswer2");
     }
 
 }
@@ -77,9 +79,10 @@ void User::saveUser()
         QFile file(fileName);
         file.open(QIODevice::WriteOnly | QIODevice::Text);
         QTextStream out(&file);
-        for( int i = 0; i< userArray.size(); ++i)
-        {
-            out << userArray[i] << ",";
+        QMap<QString, QString>::const_iterator i = userMap.constBegin();
+        while (i != userMap.constEnd()) {
+            out << i.key() << " : " << i.value() << endl;
+            ++i;
         }
         file.close();
 }
@@ -87,85 +90,85 @@ void User::saveUser()
 void User::setUserName(const QString& newUserName )
 {
     userName = newUserName;
-    userArray[0] = userName;
+    userMap.insert("userName", userName);
 }
 
 void User::setPassword(const QString& newPassword)
 {
     plainTextPassword = newPassword;
-    userArray[1] = plainTextPassword;
+    userMap.insert("plainTextPassword", plainTextPassword);
 }
 
 void User::setFName(const QString& newFname )
 {
     fName = newFname;
-    userArray[2] = fName;
+    userMap.insert("fName", fName);
 }
 
 void User::setMName(const QString& newMname)
 {
     mName = newMname;
-    userArray[3] = mName;
+    userMap.insert("mName", mName);
 }
 
 void User::setLName( const QString& newLname)
 {
     lName = newLname;
-    userArray[4]= lName;
+    userMap.insert("lName", lName);
 }
 
 void User::setCellPhone(const QString & newCell)
 {
     cellPhone = newCell;
-   // userArray[5] = cellPhone;
+   // userMap.insert();
 }
 
 void User::setHomePhone(const QString & newHomePhone)
 {
     homePhone = newHomePhone;
-   // userArray[6] = homePhone;
+   // userMap.insert();
 }
 
 void User::setWorkPhone(const QString & newWorkPhone)
 {
     workPhone = newWorkPhone;
-    //userArray[7] = workPhone;
+    //userMap.insert();
 }
 
 void User::setAge(const QString & newAge)
 {
     age = newAge;
-    userArray[5] = age;
+    userMap.insert("age",age);
 }
 
 void User::setDOB(const QString & newDOB)
 {
     DOB = newDOB;
-    userArray[6] = DOB;
+    userMap.insert("DOB", DOB);
 }
 
 void User::setSSN(const QString & newSSN)
 {
     plainTextSSN = newSSN;
-    userArray[7] = plainTextSSN;
+    userMap.insert("plainTextSSN", plainTextSSN);
 }
 
 void User::setAddr1(const QString & newAddr1)
 {
     addr1 = newAddr1;
-    userArray[8] = addr1;
+    userMap.insert("addr1", addr1);
 }
 
 void User::setAddr2(const QString & newAddr2)
 {
     addr2 = newAddr2;
-    userArray[9] = addr2;
+    userMap.insert("addr2", addr2);
 }
 
 void User::setCity(const QString & newCity)
 {
     city = newCity;
-    userArray[10] = city;
+    userMap.insert("city", city);
 }
 
 void User::setState(const QString & newState)
@@ -176,14 +179,14 @@ void User::setState(const QString & newState)
 void User::setCountry(const QString& newCountry)
 {
     country = newCountry;
-    userArray[11] = country;
+    userMap.insert("country", country);
 
 }
 
 void User::setEmail(const QString& newEmail)
 {
     email = newEmail;
-    userArray[12] = email;
+    userMap.insert("email", email);
 }
 
 void User::setSecurityQuestion1( const QString& newSecurityQ)
@@ -199,13 +202,13 @@ void User::setSecurityQuestion2(const QString& newSecurityQ)
 void User::setSecurityAnswer1(const QString& newSecurityA)
 {
     securityAnswer1 = newSecurityA;
-    userArray[13] = securityAnswer1;
+    userMap.insert("securityAnswer1",securityAnswer1);
 }
 
 void User::setSecurityAnswer2(const QString& newSecurityA)
 {
     securityAnswer2 = newSecurityA;
-    userArray[14] = securityAnswer2;
+    userMap.insert("securityAnswer2", securityAnswer2);
 }
 
 void User::setGender(const enumGender& newGender)

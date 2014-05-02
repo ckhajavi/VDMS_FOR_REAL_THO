@@ -7,10 +7,8 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDir>
-#include"wrongfiledialog.h"
-#include "addfilepath.h"
 #include <QDebug>
-
+#include<Qmap>
 
 using namespace std;
 
@@ -98,10 +96,7 @@ private:
     QString securityQuestion2;
     QString securityAnswer2;
     enumGender gender;
-    QStringList userArray;
-    int capacity;
-    int count;
-    wrongFileDialog *wrongFile;
+    QMap<QString, QString> userMap;
     QString fileName;
 
 };
