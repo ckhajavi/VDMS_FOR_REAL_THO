@@ -14,6 +14,8 @@
 #include <QString>
 #include "stocksearch.h"
 #include <QNetworkAccessManager>
+#include <dummyfordownload.h>
+#include <fstream>
 
 using namespace std;
 
@@ -44,9 +46,12 @@ private slots:
 
     void on_btnLogOut4_clicked();
 
+    void on_btnCalculate_clicked();
+
 private:
     Ui::LoginPage *ui;
     StockSearch *stockSearchWindow;
+    DummyForDownload *dummyWindow;
 };
 
 #endif // LOGINPAGE_H

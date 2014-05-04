@@ -23,7 +23,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab_5">
       <attribute name="title">
@@ -156,6 +156,11 @@
           </column>
           <column>
            <property name="text">
+            <string>Owned</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
             <string>Price Per Share</string>
            </property>
           </column>
@@ -196,45 +201,50 @@
           </column>
           <item row="0" column="0">
            <property name="text">
-            <string>GOOG</string>
+            <string>TSLA</string>
            </property>
           </item>
           <item row="0" column="1">
            <property name="text">
-            <string>$526.66</string>
+            <string>0</string>
            </property>
           </item>
           <item row="0" column="2">
            <property name="text">
-            <string>4/30/14</string>
+            <string>$526.66</string>
            </property>
           </item>
           <item row="0" column="3">
            <property name="text">
-            <string>4:00pm</string>
+            <string>4/30/14</string>
            </property>
           </item>
           <item row="0" column="4">
            <property name="text">
-            <string>-$1.04</string>
+            <string>4:00pm</string>
            </property>
           </item>
           <item row="0" column="5">
            <property name="text">
-            <string>$527.60</string>
+            <string>-$1.04</string>
            </property>
           </item>
           <item row="0" column="6">
            <property name="text">
-            <string>$528.00</string>
+            <string>$527.60</string>
            </property>
           </item>
           <item row="0" column="7">
            <property name="text">
-            <string>$522.52</string>
+            <string>$528.00</string>
            </property>
           </item>
           <item row="0" column="8">
+           <property name="text">
+            <string>$522.52</string>
+           </property>
+          </item>
+          <item row="0" column="9">
            <property name="text">
             <string>1,746,904</string>
            </property>
@@ -390,7 +400,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit"/>
+             <widget class="QLineEdit" name="lineEditSearchSymbol"/>
             </item>
            </layout>
           </item>
@@ -435,9 +445,9 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_2">
+             <widget class="QLineEdit" name="lineEditQuantity">
               <property name="readOnly">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -448,7 +458,7 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="btnCalculate">
             <property name="font">
              <font>
               <weight>75</weight>
@@ -461,7 +471,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_6">
+           <widget class="QLineEdit" name="lineEditCalculatePurchase">
             <property name="readOnly">
              <bool>true</bool>
             </property>
@@ -495,7 +505,7 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="btnReset">
           <property name="font">
            <font>
             <weight>75</weight>
@@ -508,7 +518,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="btnMakeTrade">
           <property name="font">
            <font>
             <weight>75</weight>
@@ -670,13 +680,13 @@
   <tabstop>lineEdit_3</tabstop>
   <tabstop>lineEdit_5</tabstop>
   <tabstop>lineEdit_4</tabstop>
-  <tabstop>lineEdit</tabstop>
+  <tabstop>lineEditSearchSymbol</tabstop>
   <tabstop>comboBoxBuy</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>pushButton_2</tabstop>
-  <tabstop>lineEdit_6</tabstop>
-  <tabstop>pushButton_3</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>lineEditQuantity</tabstop>
+  <tabstop>btnCalculate</tabstop>
+  <tabstop>lineEditCalculatePurchase</tabstop>
+  <tabstop>btnReset</tabstop>
+  <tabstop>btnMakeTrade</tabstop>
   <tabstop>lineEdit_7</tabstop>
   <tabstop>lineEdit_8</tabstop>
   <tabstop>lineEdit_9</tabstop>
