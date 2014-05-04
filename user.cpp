@@ -10,18 +10,18 @@ User::User()
 void User::setFileName()
 {
     QDir directory;
-    fileName = directory.homePath();
-    fileName.append("/");
-    fileName.append(email);
+    fileName = directory.homePath();   //file name is the name of the file where user info is saved, set it to user's home directory
+    fileName.append("/");              // added / to the name
+    fileName.append(email);            // name of file is user email
     fileName.append(".txt");
-    qDebug() << fileName;
+    qDebug() << fileName;               //just debugging
     
 }
 
 //overloaded setfileName
 void User::setFileName(const QString& currentEmail)
 {
-    QDir directory;
+    QDir directory;                                    //set file name to whatever the parameter currentEmail is
     fileName = directory.homePath();
     fileName.append("/");
     fileName.append(currentEmail);
@@ -42,16 +42,16 @@ bool User::loadUser()
     }
     else
     {
-        file.open(QIODevice::ReadOnly | QIODevice::Text);
-        QTextStream in(&file);
+        file.open(QIODevice::ReadOnly | QIODevice::Text);         //opening file
+        QTextStream in(&file);                                    //starting a stream reading from the file we set in setFileName function
         QString line;
         QStringList temp;
         while(!in.atEnd())
         {
-            line = in.readLine();
-            temp = line.split(" : ");
-            userMap.insert(temp.value(0), temp.value(1));
-            temp.value(0) = "";
+            line = in.readLine();                               //reading each line of text file, goes until a return is found
+            temp = line.split(" : ");                           //split each line into a list of Qstrings
+            userMap.insert(temp.value(0), temp.value(1));       //insert each item in Qstring list into our Map of user info
+            temp.value(0) = "";                                 //reset the Qstring to have nothing in
             temp.value(1) = "";
         }
         file.close();

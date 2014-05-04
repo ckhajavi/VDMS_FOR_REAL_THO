@@ -27,7 +27,7 @@ public:
 
     void setFileName();
     void setFileName(const QString&);
-    bool loadUser();           //maybe should return bool, change later
+    bool loadUser();
     void saveUser();
     //set functions
     void setUserName(const QString&);
