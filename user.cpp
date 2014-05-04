@@ -12,19 +12,19 @@ void User::setFileName()
     QDir directory;
     fileName = directory.homePath();
     fileName.append("/");
-    fileName.append(userName);
+    fileName.append(email);
     fileName.append(".txt");
     qDebug() << fileName;
     
 }
 
 //overloaded setfileName
-void User::setFileName(const QString& currentUserName)
+void User::setFileName(const QString& currentEmail)
 {
     QDir directory;
     fileName = directory.homePath();
     fileName.append("/");
-    fileName.append(currentUserName);
+    fileName.append(currentEmail);
     fileName.append(".txt");
     qDebug() << fileName;
 }
