@@ -1,6 +1,6 @@
 #include "loginpage.h"
-#include <dummyfordownload.h>
-#include <QDebug>
+#include "user.h"
+
 using namespace std;
 
 LoginPage::LoginPage(QWidget *parent) :
@@ -8,6 +8,13 @@ LoginPage::LoginPage(QWidget *parent) :
     ui(new Ui::LoginPage)
 {
     ui->setupUi(this);
+    currentUser = new User;
+}
+void LoginPage::setCurrentUser(User* theUser)
+{
+   currentUser->setEmail(theUser->getEmail());
+    qDebug() << currentUser->getEmail() <<endl;
+    currentUser = theUser;
 }
 
 void LoginPage::logOut()
@@ -19,6 +26,7 @@ void LoginPage::logOut()
 LoginPage::~LoginPage()
 {
     delete ui;
+    delete currentUser;
 }
 
 void LoginPage::on_btnLogOut1_clicked()
@@ -83,6 +91,7 @@ void LoginPage::on_btnCalculate_clicked()
     string charToReplace;
     string tempVar;
     QString quantityOfShares;
+    double purchasePrice;
 
     quantityOfShares = ui->lineEditQuantity->text();
     qDebug() << quantityOfShares; // temp output
@@ -113,5 +122,26 @@ void LoginPage::on_btnCalculate_clicked()
     tempVar = input.substr(0, input.find(" ")); //Getting price per share.
     cout << tempVar << endl;
 
-   // cout << (tempVar * quantityOfShares.toDouble());
+    cout << atof(tempVar.c_str()) << endl;
+
+    purchasePrice = (atof(tempVar.c_str()) * quantityOfShares.toDouble());
+    cout << purchasePrice;
+
+    QString myQString = QString::number(purchasePrice); //Writing stock symbol to window.
+    ui->lineEditCalculatePurchase->setText(myQString);
+
+}
+
+void LoginPage::on_btnReset_clicked()
+{
+    ui->lineEditSearchSymbol->clear();
+    ui->lineEditQuantity->clear();
+    ui->lineEditCalculatePurchase->clear();
+}
+
+void LoginPage::on_btnMakeTrade_clicked()
+{
+    Stock currentStock(ui->lineEditSearchSymbol->text());
+    currentStock.buy(ui->lineEditQuantity->text().toInt());
+    currentUser->userStockList.addStock(currentStock);
 }

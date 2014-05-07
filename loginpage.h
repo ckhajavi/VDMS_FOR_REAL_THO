@@ -16,6 +16,10 @@
 #include <QNetworkAccessManager>
 #include <dummyfordownload.h>
 #include <fstream>
+#include "stock.h"
+//#include "user.h"
+#include "stock.h"
+class User;
 
 using namespace std;
 
@@ -29,6 +33,7 @@ class LoginPage : public QDialog
 
 public:
     explicit LoginPage(QWidget *parent = 0);
+    void setCurrentUser(User*);
 
     void logOut();
     //logOut
@@ -48,10 +53,15 @@ private slots:
 
     void on_btnCalculate_clicked();
 
+    void on_btnReset_clicked();
+
+    void on_btnMakeTrade_clicked();
+
 private:
     Ui::LoginPage *ui;
     StockSearch *stockSearchWindow;
     DummyForDownload *dummyWindow;
+    User* currentUser;
 };
 
 #endif // LOGINPAGE_H
