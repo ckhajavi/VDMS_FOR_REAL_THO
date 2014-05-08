@@ -1,5 +1,6 @@
 #include "stocksearch.h"
 #include "ui_stocksearch.h"
+#include "user.h"
 
 using namespace std;
 
@@ -8,6 +9,8 @@ StockSearch::StockSearch(QWidget *parent) :
     ui(new Ui::StockSearch)
 {
     ui->setupUi(this);
+    //this might have to be a deep copy
+    currentUser = new User;
 }
 
 StockSearch::~StockSearch()
