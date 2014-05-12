@@ -11,6 +11,12 @@ StockSearch::StockSearch(QWidget *parent) :
     ui->setupUi(this);
     //this might have to be a deep copy
     currentUser = new User;
+    //connect(ui->btnAddFavorites, SIGNAL(clicked()), this, SLOT(
+}
+void StockSearch::setCurrentUserSearch(User* theUser)
+{
+    currentUser->setEmail(theUser->getEmail());
+    currentUser = theUser;  //set adresses equal to each other
 }
 
 StockSearch::~StockSearch()
@@ -20,6 +26,25 @@ StockSearch::~StockSearch()
 
 void StockSearch::on_btnAddFavorites_clicked()
 {
+    //Grabbing stock info from UI and creating a stock object
+    Stock favorite(ui->lineEditSearch->text());
+    favorite.setChangeInPrice(ui->txtChange->text().toDouble());
+    favorite.setLatestPrice(ui->txtPricePerShare->text().toDouble());
+    favorite.setDate(ui->txtDate->text());
+    favorite.setOpenPrice(ui->txtOpeningPrice->text().toDouble());
+    favorite.setTime(ui->txtTime->text());
+    favorite.setTodaysHigh(ui->txtTodaysHigh->text().toDouble());
+    favorite.setTodaysLow(ui->txtTodaysLow->text().toDouble());
+    favorite.setVolume(ui->txtVolume->text().toDouble());
+
+    if(!currentUser->userStockList->stockMap->contains(favorite.getTicker())) //if user does not own stock already
+    {
+        favorite.setAsOwned(false);             //then set stock as not owned
+        favorite.setNumOfShares(0);             //set the number of shares = 0
+        currentUser->userStockList->addStock(favorite); //add stock to the user's map of favorite and owned stocks
+    }
+    emit valueChanged(1);
+
 
 }
 
