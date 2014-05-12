@@ -1,10 +1,10 @@
-#include "user.h"
+ #include "user.h"
 
 
 User::User()
 //: age(""), birthMonth(""), birthYear(""), birthDay(""), gender(MALE)
 {
-
+    userFunds = 10000;
 }
 
 bool User::setDirectory(){
@@ -56,6 +56,78 @@ void User::setFileName(const QString& currentEmail)
     fileName.append(currentEmail);
     fileName.append(".txt");
     qDebug() << fileName;
+}
+void User::setStockFile()
+{
+    QDir directory;
+    stockFile = directory.homePath();
+    stockFile.append("/VDMS_USER/");
+    stockFile.append(email + "_stockInfo.txt");
+    //stockFile.append("_stockInfo.txt");
+    qDebug() << stockFile <<endl;
+}
+
+bool User::saveStockList()
+{
+    qDebug() << stockFile;
+    QFile file(stockFile);
+    file.open(QIODevice::WriteOnly | QIODevice::Text);
+    QTextStream out(&file);
+    QMap<QString, Stock>::const_iterator i = userStockList.stockMap->constBegin();
+    while (i != userStockList.stockMap->constEnd()) {
+        out << i.value().getTicker() << "," << i.value().getChangeInPrice() << ",";
+        out << i.value().getCost() << "," << i.value().getDate() << "," << i.value().getLatestPrice() <<",";
+        out << i.value().getOpenPrice() <<"," << i.value().getShares() <<"," << i.value().getTime() << ",";
+        out << i.value().getTodaysHigh() <<","<< i.value().getTodaysLow() <<",";
+        out << i.value().getVolume() << endl;
+        ++i;
+    }
+    file.close();
+    return true;
+}
+bool User::loadStockList()
+{
+    QFile file(stockFile);
+    if (!file.exists())
+    {
+       //wrongFile = new wrongFileDialog();
+       //wrongFile -> show();
+       //wrongFile->exec();
+        //qDebug() << "sorry not found" << endl;
+        return false;
+    }
+    else
+    {
+        file.open(QIODevice::ReadOnly | QIODevice::Text);         //opening file
+        QTextStream in(&file);                                    //starting a stream reading from the file we set in setFileName function
+        QString line;
+        QStringList temp;
+        Stock stockTemp;
+        while(!in.atEnd())
+        {
+            line = in.readLine();                               //reading each line of text file, goes until a return is found
+            temp = line.split(",");    //split each line into a list of Qstrings
+            stockTemp.setTicker(temp.value(0));
+            stockTemp.setChangeInPrice(temp.value(1).toDouble());
+            stockTemp.setCost(temp.value(2).toDouble());
+            stockTemp.setDate(temp.value(3));
+            stockTemp.setLatestPrice(temp.value(4).toDouble());
+            stockTemp.setNumOfShares(temp.value(6).toInt());
+            stockTemp.setOpenPrice(temp.value(5).toDouble());
+            stockTemp.setTime(temp.value(7));
+            stockTemp.setTodaysHigh(temp.value(8).toDouble());
+            stockTemp.setTodaysLow(temp.value(9).toDouble());
+            stockTemp.setVolume(temp.value(10).toDouble());
+            userStockList.stockMap->insert(temp.value(0), stockTemp); //insert each item in Qstring list into our Map of user info
+        }
+        file.close();
+        QMap<QString, Stock>::const_iterator i = userStockList.stockMap->constBegin();
+        while (i != userStockList.stockMap->constEnd()) {
+            qDebug() << i.value().getTicker() << ": " << i.value().getLatestPrice() <<endl;
+                        ++i;
+        }
+        return true;
+    }
 }
 
 bool User::loadUser()
@@ -112,24 +184,22 @@ bool User::loadUser()
 
 void User::saveUser()
 {
-
-/***************ADD YOUR OWN PATH ********************/
-    /*QDir directory;
-    fileName = directory.homePath();
-    fileName.append("/");
-    fileName.append(fName);
-    fileName.append(".txt");*/
         qDebug() << fileName;
         QFile file(fileName);
         file.open(QIODevice::WriteOnly | QIODevice::Text);
         QTextStream out(&file);
         QMap<QString, QString>::const_iterator i = userMap.constBegin();
-        while (i != userMap.constEnd()) {
+        while (i != userMap.constEnd())
+        {
             out << i.key() << " : " << i.value() << endl;
             ++i;
         }
         file.close();
+}
 
+QString User::getFileName() const
+{
+    return fileName;
 }
 
 void User::setUserName(const QString& newUserName )
@@ -261,6 +331,19 @@ void User::setGender(const enumGender& newGender)
     gender = newGender;
 }
 
+void User::setUserFunds(double newUserFunds)
+{
+    userFunds = newUserFunds;
+    qDebug() << userFunds;
+}
+
+void User::updateUserFunds()
+{
+    userStockList.setTotalSpent(); //updates the total amount spent on stocks
+    setUserFunds(10000 - userStockList.getTotalSpent());
+
+}
+
 //get methods
 QString User::getUserName() const
 {
@@ -370,4 +453,9 @@ enumGender User::getGender() const
 QString User::getPassword() const
 {
     return plainTextPassword;
+}
+
+double User::getUserFunds() const
+{
+    return userFunds;
 }

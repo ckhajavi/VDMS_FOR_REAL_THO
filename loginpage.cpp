@@ -12,9 +12,9 @@ LoginPage::LoginPage(QWidget *parent) :
 }
 void LoginPage::setCurrentUser(User* theUser)
 {
-   //currentUser->setEmail(theUser->getEmail());
-    //qDebug() << currentUser->getEmail() <<endl;
-    currentUser = theUser;
+    currentUser->setEmail(theUser->getEmail());
+    currentUser = theUser;  //set adresses equal to each other
+    currentUser->userStockList.setTodaysGains();    //set todays gains
     QString todaysGains = QString::number(currentUser->userStockList.getTodaysGains());
     if(currentUser->userStockList.getTodaysGains() < 0)
     {
@@ -23,6 +23,36 @@ void LoginPage::setCurrentUser(User* theUser)
     else
     {
         ui->lineEdit_TodaysGains->setText(todaysGains);
+    }
+    currentUser->userStockList.setStockTotal();            //set the total value of stock investments
+    QString stockTotalString = QString::number(currentUser->userStockList.getStockTotal()); //convert to string
+    ui->lineEdit_TotalInvestments->setText(stockTotalString);       //write it to the Account summary ui
+    currentUser->updateUserFunds();   //updates the amount of cash the user has available
+    QString userCash = QString::number(currentUser->getUserFunds());
+    ui->lineEdit_TotalCash->setText(userCash);
+
+}
+
+
+void LoginPage::addToTable()
+{
+    int rowNumber = 0;
+    QMap<QString, Stock>::const_iterator i = currentUser->userStockList.stockMap->constBegin(); //using an iterator to iterate through the Map
+    while (i != currentUser->userStockList.stockMap->constEnd())
+    {
+        ui->tableWidget->insertRow(rowNumber);
+        ui->tableWidget->setItem(rowNumber, 0, new QTableWidgetItem(i.value().getTicker()));
+        ui->tableWidget->setItem(rowNumber, 1, new QTableWidgetItem(QString::number(i.value().getShares())));
+        ui->tableWidget->setItem(rowNumber, 2, new QTableWidgetItem(QString::number(i.value().getLatestPrice())));
+        ui->tableWidget->setItem(rowNumber, 3, new QTableWidgetItem(i.value().getDate()));
+        ui->tableWidget->setItem(rowNumber, 4, new QTableWidgetItem(i.value().getTime()));
+        ui->tableWidget->setItem(rowNumber, 5, new QTableWidgetItem(QString::number(i.value().getChangeInPrice())));
+        ui->tableWidget->setItem(rowNumber, 6, new QTableWidgetItem(QString::number(i.value().getOpenPrice())));
+        ui->tableWidget->setItem(rowNumber, 7, new QTableWidgetItem(QString::number(i.value().getTodaysHigh())));
+        ui->tableWidget->setItem(rowNumber, 8, new QTableWidgetItem(QString::number(i.value().getTodaysLow())));
+        ui->tableWidget->setItem(rowNumber, 9, new QTableWidgetItem(QString::number(i.value().getVolume())));
+        i++;
+        rowNumber++;
     }
 }
 
@@ -34,8 +64,8 @@ void LoginPage::logOut()
 
 LoginPage::~LoginPage()
 {
-    delete ui;
     delete currentUser;
+    delete ui;
 }
 
 void LoginPage::on_btnLogOut1_clicked()
@@ -67,10 +97,6 @@ void LoginPage::on_btnLogOut4_clicked()
 
 void LoginPage::on_btnCalculate_clicked()
 {
-    //QTimer tT;
-    //QEventLoop q;
-
-
     QString stockSymbol = ui->lineEditSearchSymbol->text();
     QString baseURL = "http://download.finance.yahoo.com/d/quotes.txt?s=";
     QString urlFormatting = "&f=sl1d1t1c1ohgv&e=.txt";
@@ -78,13 +104,6 @@ void LoginPage::on_btnCalculate_clicked()
     QUrl thisURL = (QUrl) (baseURL + stockSymbol + urlFormatting);
     DownloadManager manager;
     manager.doDownload(thisURL);
-
-    //tT.start(3000);
-    //q.processEvents();
-    //q.exec();
-    //q.wakeUp();
-
-    //q.exit(0);
 
     //This dummy window has to open in order to download Data from YahooFinance...Click EXIT once immediately.
     dummyWindow = new DummyForDownload(this);
@@ -138,7 +157,6 @@ void LoginPage::on_btnCalculate_clicked()
 
     QString myQString = QString::number(purchasePrice); //Writing stock symbol to window.
     ui->lineEditCalculatePurchase->setText(myQString);
-
 }
 
 void LoginPage::on_btnReset_clicked()
@@ -148,12 +166,46 @@ void LoginPage::on_btnReset_clicked()
     ui->lineEditCalculatePurchase->clear();
 }
 
-void LoginPage::on_btnMakeTrade_clicked()
+void LoginPage::on_btnBuyShares_clicked()
 {
     Stock currentStock(ui->lineEditSearchSymbol->text());
     currentStock.buy(ui->lineEditQuantity->text().toInt());
     currentUser->userStockList.addStock(currentStock);
-    //update account info on screen: total gains etc
-    QString todaysGains = QString::number(currentUser->userStockList.getTodaysGains());
-    ui->lineEdit_TodaysGains->setText(todaysGains);
+
+    int numOfRows = ui->tableWidget->rowCount();
+    for (int i = numOfRows; i > 0; i--)
+    {
+        ui->tableWidget->removeRow(i - 1);
+    }
+    addToTable(); //adds stock to ui table
+    currentUser->setStockFile();      //sets the path where to store the stock
+    currentUser->saveStockList();     //save the stocks
+    QString stockTotalString = QString::number(currentUser->userStockList.getStockTotal());//updates the total value of investments
+    ui->lineEdit_TotalInvestments->setText(stockTotalString);
+
+
+}
+
+void LoginPage::on_btnRefresh_clicked()
+{
+    int numOfRows = ui->tableWidget->rowCount();
+    for (int i = numOfRows; i > 0; i--)
+    {
+        ui->tableWidget->removeRow(i - 1);
+    }
+    addToTable();
+}
+
+void LoginPage::on_btnRemoveStock_clicked()
+{
+    int rowToRemove = ui->tableWidget->currentRow();
+    ui->tableWidget->removeRow(rowToRemove);
+}
+
+void LoginPage::on_btnSellShares_clicked()
+{
+    int stockToSell;
+    //stockTosell = ui->tableWidget->row()
+    //int stockToSell = ui->tableWidget->row((ui->lineEditSearchSymbol->text));
+    qDebug() << stockToSell;
 }

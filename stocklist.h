@@ -1,8 +1,13 @@
 #ifndef STOCKLIST_H
 #define STOCKLIST_H
 #include <QMap>
-#include"stock.h"
+#include "stock.h"
+#include "loginpage.h"
 #include <QString>
+#include <QTableWidget>
+#include <QFile>
+#include <QTextStream>
+
 
 
 class StockList
@@ -11,9 +16,8 @@ public:
     friend class User;
 
     StockList();
+    QMap<QString, Stock> *stockMap;
     ~StockList();
-    bool saveStockList();
-    bool loadStockList();
 
     void addStock(const Stock&);
     void deleteStock();
@@ -32,11 +36,11 @@ public:
 
 
 private:
-    QMap<QString, Stock> *stockMap;
     double totalSpent; //total spent on stocks with bought for price;
     double stockTotal;
     double todaysGains;
     double totalGains;
+    QString stockFile;
 };
 
 #endif // STOCKLIST_H

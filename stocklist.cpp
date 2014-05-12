@@ -1,4 +1,5 @@
 #include "stocklist.h"
+#include <QTableWidgetItem>
 
 
 StockList::StockList()
@@ -11,15 +12,6 @@ StockList::StockList()
     totalGains = 0;
 }
 
-bool StockList::saveStockList()
-{
-
-}
-
-bool StockList::loadStockList()
-{
-
-}
 
 void StockList::addStock(const Stock& newStock)
 {
@@ -38,12 +30,13 @@ void StockList::addStock(const Stock& newStock)
     setStockTotal();
     setTodaysGains();
     setTotalGains();
-    QMap<QString, Stock>::const_iterator i = stockMap->constBegin(); //using an iterator to iterate through the Map
+    /*QMap<QString, Stock>::const_iterator i = stockMap->constBegin(); //using an iterator to iterate through the Map
     while (i != stockMap->constEnd()) {
         qDebug() << i.key() << " : " << i.value().getCost() << endl;
         ++i;
-    }
+    }*/
 }
+
 //sets totalSpent
 void StockList::setTotalSpent()
 {

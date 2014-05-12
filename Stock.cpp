@@ -55,9 +55,11 @@ Stock operator+(const Stock& leftSide, const Stock& rightSide)
     temp.ticker = rightSide.ticker;
     temp.owned = true;
     temp.numOfShares = rightSide.numOfShares + leftSide.numOfShares;
+    temp.latestPrice = rightSide.latestPrice;
     temp.changeInPrice = rightSide.changeInPrice;
     temp.todaysHigh = rightSide.todaysHigh;
     temp.todaysLow = rightSide.todaysLow;
+    temp.openPrice = rightSide.openPrice;
     temp.volume = rightSide.volume;
     temp.cost = rightSide.cost + leftSide.cost;
 
@@ -136,6 +138,78 @@ double Stock::getOpenPrice() const
     return openPrice;
 }
 
+QString Stock::getDate() const
+{
+    return date;
+}
 
+QString Stock::getTime() const
+{
+    return time;
+}
 
+double Stock::getChangeInPrice() const
+{
+    return changeInPrice;
+}
+
+double Stock::getTodaysHigh() const
+{
+    return todaysHigh;
+}
+
+double Stock::getTodaysLow() const
+{
+    return todaysLow;
+}
+
+double Stock::getVolume()const
+{
+    return volume;
+}
+void Stock::setTicker(const QString& newTicker)
+{
+    ticker = newTicker;
+}
+
+void Stock::setCost(double newCost)
+{
+    cost = newCost;
+}
+void Stock::setChangeInPrice(double newChangePrice)
+{
+    changeInPrice = newChangePrice;
+}
+void Stock::setDate(const QString & newDate)
+{
+    date = newDate;
+}
+void Stock::setLatestPrice(double newLatestPrice)
+{
+    latestPrice = newLatestPrice;
+}
+void Stock::setNumOfShares(int newShares)
+{
+    numOfShares = newShares;
+}
+void Stock::setOpenPrice(double newOpenPrice)
+{
+    openPrice = newOpenPrice;
+}
+void Stock::setTime(const QString& newTime)
+{
+    time = newTime;
+}
+void Stock::setTodaysHigh(double newHigh)
+{
+    todaysHigh = newHigh;
+}
+void Stock::setTodaysLow(double newLow)
+{
+    todaysLow = newLow;
+}
+void Stock::setVolume(double newVolume)
+{
+    volume = newVolume;
+}
 

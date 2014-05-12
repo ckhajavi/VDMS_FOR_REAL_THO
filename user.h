@@ -26,11 +26,15 @@ public:
     User();
     StockList userStockList;
 
+    void setStockFile();
     void setFileName();
     void setFileName(const QString&);
     bool setDirectory();
     bool loadUser();
     void saveUser();
+    bool saveStockList();
+    bool loadStockList();
+    QString getFileName() const;
     //set functions
     void setUserName(const QString&);
     void setPassword(const QString&);
@@ -54,6 +58,8 @@ public:
     void setSecurityAnswer1(const QString&);
     void setSecurityAnswer2(const QString&);
     void setGender(const enumGender&);
+    void setUserFunds(double);
+    void updateUserFunds();
 
     //get methods
     QString getUserName() const;
@@ -82,6 +88,7 @@ public:
     QString getPassword() const;
     enumGender getGender() const;
     double totalCostOfStocks(const StockList&);
+    double getUserFunds() const;
 
 private:
     QString userName;
@@ -107,6 +114,8 @@ private:
     QMap<QString, QString> userMap;
     QStringList userArray;
     QString fileName;
+    double userFunds;
+    QString stockFile;
 };
 
 #endif // USER_H
