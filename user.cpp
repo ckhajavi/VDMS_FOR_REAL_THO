@@ -7,6 +7,11 @@ User::User()
     userFunds = 10000;
     userStockList = new StockList;
 }
+User::~User()
+{
+    delete userStockList;
+    userStockList = NULL;
+}
 
 bool User::setDirectory(){
 
@@ -452,4 +457,5 @@ double User::getUserFunds() const
 {
     return userFunds;
 }
+
 
