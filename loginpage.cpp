@@ -107,6 +107,7 @@ void LoginPage::on_btnCalculate_clicked()
     dummyWindow->exec();
     dummyWindow->close();
 
+
     //**************************************************************************
 
     ifstream fileReader; //("stockInfo.txt");
@@ -165,23 +166,28 @@ void LoginPage::on_btnReset_clicked()
 
 void LoginPage::on_btnBuyShares_clicked()
 {
-    Stock currentStock(ui->lineEditSearchSymbol->text());
-    currentStock.buy(ui->lineEditQuantity->text().toInt());
-    currentUser->userStockList->addStock(currentStock);
-
-    int numOfRows = ui->tableWidget->rowCount();
-    for (int i = numOfRows; i > 0; i--)
+    if (ui->lineEdit_TotalCash < ui->lineEditCalculatePurchase) //Not enough money to make trade.
     {
-        ui->tableWidget->removeRow(i - 1);
+        QMessageBox::information(this, "Insufficient Funds", "Sorry, you do not have enough funds to make this purchase. Find a better job buddy!");
     }
-    addToTable(); //adds stock to ui table
-    double funds = currentUser->getUserFunds();
-    currentUser->setUserFunds(funds - currentStock.getCost());
-    updateAccountSummary();
-    currentUser->saveStockList();     //save the stocks
-    currentUser->saveUser();  //saves the user info
+    else
+    {
+        Stock currentStock(ui->lineEditSearchSymbol->text());
+        currentStock.buy(ui->lineEditQuantity->text().toInt());
+        currentUser->userStockList->addStock(currentStock);
 
-
+        int numOfRows = ui->tableWidget->rowCount();
+        for (int i = numOfRows; i > 0; i--)
+        {
+            ui->tableWidget->removeRow(i - 1);
+        }
+        addToTable(); //adds stock to ui table
+        double funds = currentUser->getUserFunds();
+        currentUser->setUserFunds(funds - currentStock.getCost());
+        updateAccountSummary();
+        currentUser->saveStockList();     //save the stocks
+        currentUser->saveUser();  //saves the user info
+    }
 }
 
 void LoginPage::on_btnRefresh_clicked()
@@ -205,19 +211,21 @@ void LoginPage::on_btnSellShares_clicked()
 {
     Stock stockToSell(ui->lineEditSearchSymbol->text()); //creates stock object
     stockToSell.sell(ui->lineEditQuantity->text().toInt()); //sells the stock
-    currentUser->userStockList->sellStock(stockToSell); //update map of stocks
-    int numOfRows = ui->tableWidget->rowCount();
-    for (int i = numOfRows; i > 0; i--)
+    if(currentUser->userStockList->sellStock(stockToSell))
     {
-        ui->tableWidget->removeRow(i - 1);
-    }
-    addToTable(); //updates ui table
-    double funds = currentUser->getUserFunds();
-    currentUser->setUserFunds(funds + stockToSell.getCost());
-    currentUser->saveStockList();     //save the stocks
-    updateAccountSummary();
+        int numOfRows = ui->tableWidget->rowCount();
+        for (int i = numOfRows; i > 0; i--)
+        {
+            ui->tableWidget->removeRow(i - 1);
+        }
+        addToTable(); //updates ui table
+        double funds = currentUser->getUserFunds();
+        currentUser->setUserFunds(funds + stockToSell.getCost());
+        currentUser->saveStockList();     //save the stocks
+        updateAccountSummary();
 
-    currentUser->saveUser();   //saves the user info
+        currentUser->saveUser();   //saves the user info
+    }
 
 
 
